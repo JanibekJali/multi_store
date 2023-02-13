@@ -80,18 +80,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     const EdgeInsets.only(top: 25, left: 30),
                                 child: Row(
                                   children: [
-                                    CircleAvatar(
-                                      radius: 50,
-                                      // backgroundImage:
-                                      //     AssetImage('images/inapp/guest.jpg'),
-                                      backgroundImage:
-                                          NetworkImage(data['profileimage']),
-                                    ),
+                                    data['profileimage'] == ''
+                                        ? CircleAvatar(
+                                            radius: 50,
+                                            backgroundImage: AssetImage(
+                                                'images/inapp/guest.jpg'),
+                                          )
+                                        : CircleAvatar(
+                                            radius: 50,
+                                            // backgroundImage:
+                                            //     AssetImage('images/inapp/guest.jpg'),
+                                            backgroundImage: NetworkImage(
+                                                data['profileimage']),
+                                          ),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 25),
                                       child: Text(
                                         // 'Guest'.toUpperCase(),
-                                        data['name'].toUpperCase(),
+                                        data['name'] == ''
+                                            ? 'Guest'.toUpperCase()
+                                            : data['name'].toUpperCase(),
                                         style: TextStyle(
                                           fontSize: 24,
                                           fontWeight: FontWeight.w600,
@@ -247,7 +255,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         RepeatedListTile(
                                           title: 'Email Address',
                                           // subTitle: 'example@email.com',
-                                          subTitle: data['email'],
+                                          subTitle: data['email'] == ''
+                                              ? 'Anonymous email'
+                                              : data['email'],
                                           icon: Icons.email,
                                           // onPressed: () {},
                                         ),
@@ -271,7 +281,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         // ),
                                         RepeatedListTile(
                                           title: 'Phone No.',
-                                          subTitle: data['phone'],
+                                          subTitle: data['phone'] == ''
+                                              ? 'Anonymous phone'
+                                              : data['phone'],
                                           icon: Icons.phone,
                                         ),
                                         // Padding(
@@ -292,7 +304,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           title: 'Address',
                                           // subTitle:
                                           // 'example:120, - st - New York',
-                                          subTitle: data['address'],
+                                          subTitle: data['address'] == ' '
+                                              ? 'Anonymous address '
+                                              : data['address'],
                                           icon: Icons.location_pin,
                                           onPressed: () {},
                                         ),
