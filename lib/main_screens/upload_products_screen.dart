@@ -1,10 +1,12 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:multi_store/auth/auth_widgets/snackbar/snackbar_widget.dart';
 import 'package:multi_store/utilities/categ_list.dart';
+import 'package:path/path.dart' as path;
 
 class UploadProductsScreen extends StatefulWidget {
   const UploadProductsScreen({Key? key}) : super(key: key);
@@ -26,6 +28,7 @@ class _UploadProductsScreenState extends State<UploadProductsScreen> {
 
   final ImagePicker _picker = ImagePicker();
   List<XFile>? imagesFileList = [];
+  List<String> imagesUrlList = [];
   List<String> subCategList = [];
   dynamic _pickedImageError;
 
@@ -366,13 +369,34 @@ class _UploadProductsScreenState extends State<UploadProductsScreen> {
     }
   }
 
-  void uploadProduct() {
+  void uploadProduct() async {
     /* && - both has to be worked || -one may be not selected*/
     if (mainCategValue != 'select category' || subCategValue != 'subcategory') {
       if (_formKey.currentState!.validate()) {
         _formKey.currentState!.save();
         if (imagesFileList!.isNotEmpty) {
+          try {
+            for (var image in imagesFileList!) {
+              firebase_storage.Reference ref = firebase_storage
+                  .FirebaseStorage.instance
+                  .ref('products/${path.basename(image.path)}');
+              await ref.putFile(File(image.path)).whenComplete(() async {
+                await ref.getDownloadURL().then((value) {
+                  imagesUrlList.add(value);
+                });
+              });
+            }
+          } catch (e) {
+            log('$e');
+          }
+
           log('Images picked');
+          log('Valid');
+          log('$price');
+          log('$quantity');
+          log('$proName');
+          log('$proDesc');
+
           setState(() {
             imagesFileList = [];
             mainCategValue = 'select category';
