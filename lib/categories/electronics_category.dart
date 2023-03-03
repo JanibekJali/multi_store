@@ -32,7 +32,7 @@ class ElectronicsCategory extends StatelessWidget {
                       children: List.generate(electronics.length - 1, (index) {
                         return SubCategoryModel(
                           mainCategName: 'electronics',
-                          subCategName: shoes[index + 1],
+                          subCategName: electronics[index + 1],
                           assetName: 'images/electronics/electronics$index.jpg',
                           subCategLabel: electronics[index + 1],
                         );
