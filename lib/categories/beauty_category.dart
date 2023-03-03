@@ -32,7 +32,7 @@ class BeautyCategory extends StatelessWidget {
                       children: List.generate(beauty.length - 1, (index) {
                         return SubCategoryModel(
                           mainCategName: 'beauty',
-                          subCategName: shoes[index + 1],
+                          subCategName: beauty[index + 1],
                           assetName: 'images/beauty/beauty$index.jpg',
                           subCategLabel: beauty[index + 1],
                         );

@@ -1,4 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:multi_store/categories/accessories_category.dart';
+import 'package:multi_store/categories/bags_category.dart';
+import 'package:multi_store/categories/electronics_category.dart';
+import 'package:multi_store/categories/shoes_category.dart';
+import 'package:multi_store/categories/women_categories.dart';
+import 'package:multi_store/galleries/accessories_gallery_screen.dart';
+import 'package:multi_store/galleries/bags_gallery_screen.dart';
+import 'package:multi_store/galleries/beauty_gallery_screen.dart';
+import 'package:multi_store/galleries/electronics_gallery_screen.dart';
+import 'package:multi_store/galleries/homegarden_gallery_screen.dart';
+import 'package:multi_store/galleries/kids_gallery_screen.dart';
+import 'package:multi_store/galleries/men_gallery_screen.dart';
+import 'package:multi_store/galleries/shoes_gallery_screen.dart';
+import 'package:multi_store/galleries/women_gallery_screen.dart';
 import 'package:multi_store/widgets/fake_search_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -14,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return DefaultTabController(
       length: 9,
       child: Scaffold(
+        backgroundColor: Colors.blueGrey.shade100.withOpacity(0.5),
         appBar: AppBar(
           elevation: 0.0,
           backgroundColor: Colors.white,
@@ -36,15 +51,17 @@ class _HomeScreenState extends State<HomeScreen> {
               ]),
         ),
         body: const TabBarView(children: [
-          Center(child: Text('men screen')),
-          Center(child: Text('women screen')),
-          Center(child: Text('shoes screen')),
-          Center(child: Text('bags screen')),
-          Center(child: Text('electronics screen')),
-          Center(child: Text('accessories screen')),
-          Center(child: Text('home & garden screen')),
-          Center(child: Text('kids screen')),
-          Center(child: Text('beauty screen')),
+          // Center(child: Text('men screen')),
+          MenGalleryScreen(),
+          WomenGalleryScreen(),
+          ShoesGalleryScreen(),
+          BagsGalleryScreen(),
+          ElectronicsGalleryScreen(),
+          AccessoriesGalleryScreen(),
+          HomeGardenGalleryScreen(),
+          KidsGalleryScreen(),
+          BeautyGalleryScreen(),
+          // Center(child: Text('beauty screen')),
         ]),
       ),
     );
