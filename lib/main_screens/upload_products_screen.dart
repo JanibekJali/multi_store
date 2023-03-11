@@ -439,7 +439,7 @@ class _UploadProductsScreenState extends State<UploadProductsScreen> {
           subCategList = [];
           imagesFileList = [];
         });
-        _formKey.currentState!.reset(); 
+        _formKey.currentState!.reset();
       });
     }
   }
