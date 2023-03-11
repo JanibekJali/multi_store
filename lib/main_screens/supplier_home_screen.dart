@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:multi_store/main_screens/dashboard_screen.dart';
 import 'package:multi_store/main_screens/home_screen.dart';
 import 'package:multi_store/main_screens/store_screen.dart';
+import 'package:multi_store/main_screens/upload_products_screen.dart';
 
 import 'categor_screen.dart';
 
@@ -19,10 +20,11 @@ class _SupplierHomeScreenState extends State<SupplierHomeScreen> {
     const CategorScreen(),
     const StoreScreen(),
     DashboardScreen(),
+    UploadProductsScreen(),
 
-    Center(
-      child: Text('upload'),
-    ),
+    // Center(
+    //   child: Text('upload'),
+    // ),
     // const CartScreen(),
     // const ProfileScreen(),
 

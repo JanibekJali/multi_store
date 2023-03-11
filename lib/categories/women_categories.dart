@@ -29,12 +29,12 @@ class WomenCategory extends StatelessWidget {
                       mainAxisSpacing: 70,
                       crossAxisSpacing: 15,
                       crossAxisCount: 3,
-                      children: List.generate(men.length, (index) {
+                      children: List.generate(women.length - 1, (index) {
                         return SubCategoryModel(
                           mainCategName: 'women',
-                          subCategName: men[index],
+                          subCategName: women[index + 1],
                           assetName: 'images/women/women$index.jpg',
-                          subCategLabel: women[index],
+                          subCategLabel: women[index + 1],
                         );
                       }),
                     ),

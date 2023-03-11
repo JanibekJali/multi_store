@@ -153,7 +153,7 @@ class _SupplierLoginState extends State<SupplierLogin> {
                         haveAccount: 'Don\'t Have Account? ',
                         onPressed: () {
                           Navigator.pushReplacementNamed(
-                              context, '/customer_signup');
+                              context, '/supplier_signup');
                         },
                       ),
                       processing == true
